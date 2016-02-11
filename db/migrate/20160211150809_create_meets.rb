@@ -3,6 +3,7 @@ class CreateMeets < ActiveRecord::Migration
     create_table :meets do |t|
       t.text :content
       t.string :token
+      t.belongs_to :user
 
       t.timestamps null: false
     end

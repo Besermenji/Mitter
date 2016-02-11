@@ -1,5 +1,7 @@
 # class that represents mitter user
 class User < ActiveRecord::Base
+  has_many :meets
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :birth_date, presence: true
