@@ -5,6 +5,7 @@ class MeetsController < ApplicationController
   # GET /meets.json
   def index
     @meets = Meet.all
+    @meet = current_user.meets.new
   end
 
   # GET /meets/1
@@ -28,10 +29,10 @@ class MeetsController < ApplicationController
     @meet.token = generate_token
     respond_to do |format|
       if @meet.save
-        format.html { redirect_to @meet, notice: 'Meet was successfully created.' }
-        format.json { render :show, status: :created, location: @meet }
+        format.html { redirect_to root_path, notice: 'Meet was successfully created.' }
+        format.json { render :show, status: :created, location: root_path }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path  }
         format.json { render json: @meet.errors, status: :unprocessable_entity }
       end
     end

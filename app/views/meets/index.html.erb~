@@ -23,7 +23,7 @@
       <tr>
          <td>&nbsp;</td>
         <td><%= meet.content %></td>
-         <td>&nbsp;</td>
+         <td>%nbsp;</td>
 	<% if meet.user == current_user %>	
           <td><%= link_to 'Edit', edit_meet_path(meet) %></td>
           <td><%= link_to 'Destroy', meet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
