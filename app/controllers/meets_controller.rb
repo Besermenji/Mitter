@@ -14,7 +14,7 @@ class MeetsController < ApplicationController
 
   # GET /meets/new
   def new
-    @meet = Meet.new
+    @meet = current_user.meets.new
   end
 
   # GET /meets/1/edit
@@ -24,8 +24,8 @@ class MeetsController < ApplicationController
   # POST /meets
   # POST /meets.json
   def create
-    @meet = Meet.new(meet_params)
-
+    @meet = current_user.meets.new(meet_params)
+    @meet.token = generate_token
     respond_to do |format|
       if @meet.save
         format.html { redirect_to @meet, notice: 'Meet was successfully created.' }
@@ -64,11 +64,15 @@ class MeetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meet
-      @meet = Meet.find(params[:id])
+      @meet = current_user.meets.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meet_params
-      params.require(:meet).permit(:content, :token)
+      params.require(:meet).permit(:content)
+    end
+
+    def generate_token
+      SecureRandom.urlsafe_base64(10)
     end
 end
