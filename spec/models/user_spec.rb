@@ -6,14 +6,14 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without first name' do
-    FactoryGirl.buld(:user, first_name: nil).should_not be_valid
+    FactoryGirl.build(:user, first_name: nil).should_not be_valid
   end
 
   it 'is invalid without last name' do
-    FactoryGirl.buld(:user, last_name: nil).should_not be_valid
+    FactoryGirl.build(:user, last_name: nil).should_not be_valid
   end
 
   it 'is invalid without birth year' do
-    FactoryGirl.build(:user, birth_year: nil).should_not be_valid
+    FactoryGirl.build(:user, birth_date: nil).should_not be_valid
   end
 end
