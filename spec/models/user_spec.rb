@@ -28,6 +28,6 @@ RSpec.describe User, type: :model do
                              first_name: 'Imenko',
                              last_name: 'Prezimenkovic',
                              birth_date: (Date.current - 12.years))
-    expect(user.name).to == 'Imenko Prezimenkovic'
+    expect(user.name).to eq 'Imenko Prezimenkovic'
   end
 end
