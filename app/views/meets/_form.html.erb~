@@ -12,14 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br>
+    <p>What are you thiniking about?</p><br>
     <%= f.text_area :content %>
   </div>
-  <div class="field">
-    <%= f.label :token %><br>
-    <%= f.text_field :token %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit id:'commit' %>
   </div>
 <% end %>
