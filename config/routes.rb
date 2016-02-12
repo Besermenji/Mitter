@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
   resources :meets
+
   devise_for :users, :controllers => { registrations: 'registrations' }
+
+  get 'profile/:id' => 'profile#show', as: :profile
 
   root 'meets#index'
   # The priority is based upon order of creation: first created -> highest priority.
