@@ -1,21 +1,44 @@
-<%= form_for(@meet) do |f| %>
-  <% if @meet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@meet.errors.count, "error") %> prohibited this meet from being saved:</h2>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12">
+				<h3 class="text-center">
+				What are you thinking about?
+				</h3>
+                                <%= form_for(@meet) do |f| %>
+                                  <% if @meet.errors.any? %>
+                                    <div id="error_explanation">
+                                      <h2><%= pluralize(@meet.errors.count, "error") %> prohibited this meet from being saved:</h2>
+                                      <ul>
+                                        <% @meet.errors.full_messages.each do |message| %>
+                                          <li><%= message %></li>
+                                        <% end %>
+                                      </ul>
+                                    </div>
+                                  <% end %>
 
-      <ul>
-      <% @meet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <p>What are you thiniking about?</p><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit id:'commit' %>
-  </div>
-<% end %>
+					<div class="row">
+						<div class="col-md-8 field">
+                                                  <%= f.text_area :content, cols:45, rows:1 %>
+						</div>
+						<div class="col-md-4 action" >
+                                                      <%= f.submit id:'commit', class:' btn btn-lg'%>
+						</div>
+                                               <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+</div>
+
+
+
+
+
