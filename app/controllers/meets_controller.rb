@@ -26,7 +26,6 @@ class MeetsController < ApplicationController
   # POST /meets.json
   def create
     @meet = current_user.meets.new(meet_params)
-    @meet.token = generate_token
     respond_to do |format|
       if @meet.save
         format.html { redirect_to root_path, notice: 'Meet was successfully created.' }
@@ -71,9 +70,5 @@ class MeetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def meet_params
       params.require(:meet).permit(:content)
-    end
-
-    def generate_token
-      SecureRandom.urlsafe_base64(10)
     end
 end
