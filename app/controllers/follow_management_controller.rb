@@ -3,7 +3,7 @@ class FollowManagementController < ApplicationController
 
   def follow
     current_user.follow(@user)
-    FollowNotice.send_follow_notice(current_user, @user).deliver_now
+    PostmanWorker.perform_async(generate_follow_json)
     redirect_to_profile
   end
 
@@ -30,5 +30,10 @@ class FollowManagementController < ApplicationController
 
   def redirect_to_profile
     redirect_to profile_path(@user)
+  end
+
+  def generate_follow_json
+    JSON.generate({ follower_id: current_user.id,
+                    followed_id: @user.id })
   end
 end
