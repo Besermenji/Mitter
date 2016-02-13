@@ -1,0 +1,11 @@
+<html>
+   <head>
+     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+   </head>
+   <body>
+     <h1>User <%= @follower.name %> (<%= @follower.email %>) is now following you!</h1>
+     <p>
+       You can view his profile  <%= link_to 'here', (url_for  profile_url(@follower)) %>
+     </p>
+   </body>
+ </html>

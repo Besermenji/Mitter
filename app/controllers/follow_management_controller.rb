@@ -3,6 +3,7 @@ class FollowManagementController < ApplicationController
 
   def follow
     current_user.follow(@user)
+    FollowNotice.send_follow_notice(current_user, @user).deliver_now
     redirect_to_profile
   end
 
