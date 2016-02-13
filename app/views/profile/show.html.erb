@@ -3,5 +3,18 @@
 <p>email: <strong><%= @profile.email %></strong></p>
 <p>Birth date: <strong><%= @profile.birth_date.year %></strong></p>
 
-<p>Fallowers: WILL BE IMPLEMENTED</p>
-<p>Fallowing: WILL BE IMPLEMENTED</p>
+<p>Followers count: <strong> <%= @profile.followers_count %></strong></p>
+
+<% unless @profile == current_user %>
+<% if current_user.following?(@profile)%>
+  <%= button_to 'UnFollow!', stop_follow_path(@profile) %>
+<% else %>
+  <%= button_to 'Follow!', follow_path(@profile) %>
+<% end %>
+
+<% if current_user.blocks.include?(@profile) %>
+  <%= button_to 'UnBlock!', stop_block_path(@profile) %>
+<% else %>
+	<%= button_to 'Block!', block_path(@profile) %>
+<% end %>
+<% end %>

@@ -1,0 +1,2 @@
+module FollowManagementHelper
+end

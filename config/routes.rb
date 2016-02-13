@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  post 'follow/:id' => 'follow_management#follow', as: :follow
+
+  post 'stop_follow/:id' => 'follow_management#stop_follow', as: :stop_follow
+
+  post 'block/:id' => 'follow_management#block', as: :block
+
+  post 'stop_block/:id' => 'follow_management#stop_block', as: :stop_block
+
   resources :meets
 
   devise_for :users, :controllers => { registrations: 'registrations' }

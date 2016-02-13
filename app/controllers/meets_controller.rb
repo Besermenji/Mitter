@@ -4,7 +4,7 @@ class MeetsController < ApplicationController
   # GET /meets
   # GET /meets.json
   def index
-    @meets = Meet.all
+    @meets = current_user.meets.all
     @meet = current_user.meets.new
   end
 
