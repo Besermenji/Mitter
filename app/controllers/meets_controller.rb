@@ -1,3 +1,5 @@
+# class that is used as a controller for
+#   mini tweets (meets)
 class MeetsController < ApplicationController
   before_action :set_meet, only: [:show, :edit, :update, :destroy]
 
@@ -31,7 +33,7 @@ class MeetsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Meet was successfully created.' }
         format.json { render :show, status: :created, location: root_path }
       else
-        format.html { redirect_to root_path  }
+        format.html { redirect_to root_path }
         format.json { render json: @meet.errors, status: :unprocessable_entity }
       end
     end
@@ -62,13 +64,14 @@ class MeetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meet
-      @meet = current_user.meets.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def meet_params
-      params.require(:meet).permit(:content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_meet
+    @meet = current_user.meets.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def meet_params
+    params.require(:meet).permit(:content)
+  end
 end

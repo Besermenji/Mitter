@@ -1,3 +1,4 @@
+# controller used for managing follow activity
 class FollowManagementController < ApplicationController
   before_action :set_user
 
@@ -33,7 +34,7 @@ class FollowManagementController < ApplicationController
   end
 
   def generate_follow_json
-    JSON.generate({ follower_id: current_user.id,
-                    followed_id: @user.id })
+    JSON.generate(follower_id: current_user.id,
+                  followed_id: @user.id)
   end
 end

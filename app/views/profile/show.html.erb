@@ -3,7 +3,8 @@
 <p>email: <strong><%= @profile.email %></strong></p>
 <p>Birth date: <strong><%= @profile.birth_date.year %></strong></p>
 
-<p>Followers count: <strong> <%= @profile.followers_count %></strong></p>
+<p>Followers count: <strong><%= @profile.followers_count %></strong></p>
+<p>Mentions count: <strong><%= @profile.mentions_count %></strong><p>
 
 <% unless @profile == current_user %>
 <% if current_user.following?(@profile)%>

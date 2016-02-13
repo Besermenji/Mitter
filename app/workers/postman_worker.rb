@@ -1,3 +1,4 @@
+# class used for sending emails with sidekiq
 class PostmanWorker
   include Sidekiq::Worker
 
@@ -5,6 +6,6 @@ class PostmanWorker
     info = JSON.load(info)
     follower = User.find(info['follower_id'])
     followed = User.find(info['followed_id'])
-    FollowNotice.send_follow_notice(follower,followed).deliver_now
+    FollowNotice.send_follow_notice(follower, followed).deliver_now
   end
 end

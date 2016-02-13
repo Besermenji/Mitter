@@ -16,7 +16,7 @@
   <tbody>
     <% @meets.each do |meet| %>
       <tr>
-        <td><strong><%= link_to meet.user.name, profile_path(meet.user) %>:</strong></td>
+	      <td><strong><%= link_to meet.user.name, profile_path(meet.user) %>(<%= meet.user.mentions_count%>):</strong></td>
 	<td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
